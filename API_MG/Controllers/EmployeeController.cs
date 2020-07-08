@@ -11,14 +11,19 @@ namespace API_MG.Controllers
 {
     public class EmployeeController : ApiController
     {
+        private readonly IEmployee employeeModule;
+        public EmployeeController(IEmployee employee)
+        {
+            employeeModule = employee;
+        }
+
         [HttpGet]
         [Route("api/employee/{id}/list")]
         public async Task<HttpResponseMessage> List(int id)
         {
             try
             {
-                var employee = Application.Container.Resolve<IEmployee>();
-                return Request.CreateResponse(HttpStatusCode.OK, await employee.GetAsync(id));
+                return Request.CreateResponse(HttpStatusCode.OK, await employeeModule.GetAsync(id));
             }
             catch (Exception ex)
             {
