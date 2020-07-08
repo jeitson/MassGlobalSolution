@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>MassGlobal</title>
+
+    <script src="assets/js/jquery.js"></script>
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
+
+    <script src="app/employee.js"></script>
+</head>
+<body>
+    <div class="content col_8" style="width: 800px; margin: 0 auto; margin-top:20px;">
+        <div class="input-group mb-3">
+            <input type="number" class="txt form-control" placeholder="Identificador del usuario" aria-label="Identificador del usuario" aria-describedby="basic-addon2">
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary" type="button" onclick="search()">Buscar</button>
+            </div>
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Tipo contrato</th>
+                    <th scope="col">Rol</th>
+                    <th scope="col">Salario anual</th>
+                </tr>
+            </thead>
+            <tbody class="rowsemployee">
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
