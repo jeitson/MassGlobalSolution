@@ -14,21 +14,12 @@ namespace Library_MG.Src.Business
     /// </summary>
     public class EmployeeLogic : IEmployee
     {
-        #region Propiedades
-        /// <summary>
-        /// Instancia singleton clase employee de acceso a datos
-        /// </summary>
-        private EmployeeDao _employeeModule;
-        private EmployeeDao EmployeeModule
+        private readonly EmployeeDao employeeModule;
+
+        internal EmployeeLogic(EmployeeDao employee)
         {
-            get
-            {
-                if (_employeeModule == null)
-                    _employeeModule = new EmployeeDao();
-                return _employeeModule;
-            }
-        } 
-        #endregion
+            employeeModule = employee;
+        }
 
         /// <summary>
         /// Consulta los empleados
@@ -43,7 +34,7 @@ namespace Library_MG.Src.Business
                     throw new ArgumentException("El identificador de filtro no es valido");
 
                 //se consultan los empleados llamando al modulo DAO
-                var employees = await EmployeeModule.GetAsync();
+                var employees = await employeeModule.GetAsync();
                 employees = ApplyFilter(id, employees);
 
                 //si existen datos en la lista, realiza la creacion de los objetos

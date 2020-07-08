@@ -1,4 +1,5 @@
 ﻿using Library_MG.Src.Business;
+using Library_MG.Src.Data;
 using Library_MG.Src.Interfaces;
 using Unity;
 using Unity.Lifetime;
@@ -30,7 +31,11 @@ namespace Library_MG
         /// </summary>
         public static void Start()
         {
+            //BusinessRules
             Container.RegisterType<IEmployee, EmployeeLogic>(new PerThreadLifetimeManager());
+
+            //DataAccess
+            Container.RegisterType<EmployeeDao>(new PerThreadLifetimeManager());
         }
     }
 }
